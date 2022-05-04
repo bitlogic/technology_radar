@@ -11,6 +11,14 @@ interface Paragraph {
   values: string[];
 }
 
+interface RadarLabels {
+  quadrant: string;
+  zoomIn: string;
+  newRevision: string;
+  changedRevision: string;
+  unchangedRevision: string;
+}
+
 interface PageHelp {
   paragraphs: Paragraph[];
   quadrantsPreDescription?: string;
@@ -50,6 +58,7 @@ export interface Messages {
   searchLabel?: string;
   searchPlaceholder?: string;
   revisionsText?: string;
+  radarLabels?: RadarLabels;
 }
 
 const MessagesContext = createContext<Messages | undefined>(undefined);

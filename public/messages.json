@@ -122,5 +122,12 @@
       "iconName": "github"
     }
   ],
-  "socialLinksLabel": "Follow us:"
+  "socialLinksLabel": "Follow us:",
+  "radarLabels" : {
+    "quadrant" : "Quadrant",
+    "zoomIn" : "Zoom In",
+    "newRevision": "New in this version",
+    "changedRevision": "Recently changed",
+    "unchangedRevision": "Unchanged"
+  }
 }

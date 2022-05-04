@@ -5,6 +5,8 @@ import ItemList from "../ItemList/ItemList";
 import Flag from "../Flag/Flag";
 import { Group } from "../../model";
 import "./quadrant-section.scss";
+import { useMessages } from "../../context/MessagesContext";
+
 const renderList = (
   ringName: string,
   quadrantName: string,
@@ -73,6 +75,7 @@ export default function QuadrantSection({
   config: ConfigData;
   big?: boolean;
 }) {
+  const { radarLabels } = useMessages();
   return (
     <div className="quadrant-section">
       <div className="quadrant-section__header">
@@ -84,7 +87,7 @@ export default function QuadrantSection({
             <div className="split__right">
               <Link className="icon-link" pageName={`${quadrantName}`}>
                 <span className="icon icon--pie icon-link__icon" />
-                Zoom In
+                { radarLabels?.zoomIn || 'Zoom In'}
               </Link>
             </div>
           )}

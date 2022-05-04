@@ -2,7 +2,7 @@ import React from "react";
 import RadarChart from "../Chart/RadarChart";
 import { ConfigData } from "../../config";
 import { Item, QuadrantConfig } from "../../model";
-
+import { useMessages } from "../../context/MessagesContext";
 import "./radar-grid.scss";
 import Link from "../Link/Link";
 
@@ -17,17 +17,18 @@ const QuadrantLabel: React.FC<{
     { bottom: 0, right: 0 },
     { bottom: 0, left: 0 },
   ];
+  const { radarLabels } = useMessages();
 
   return (
     <div className="quadrant-label" style={stylesMap[quadrantConfig.position - 1]}>
       <div className="split">
         <div className="split__left">
-          <small>Quadrant {quadrantConfig.position}</small>
+          <small> { radarLabels?.quadrant || 'Quadrant' } {quadrantConfig.position}</small>
         </div>
         <div className="split__right">
           <Link className="icon-link" pageName={`${quadrantName}`}>
             <span className="icon icon--pie icon-link__icon" />
-            Zoom In
+            { radarLabels?.zoomIn || 'Zoom In'}
           </Link>
         </div>
       </div>
@@ -39,19 +40,20 @@ const QuadrantLabel: React.FC<{
 };
 
 const Legend: React.FC = () => {
+  const { radarLabels } = useMessages();
   return (
     <div className="radar-legend">
       <div className="wrapper">
         <span className="icon icon--blip_new"></span>
-        New in this version
+        { radarLabels?.newRevision || 'New in this version'}
       </div>
       <div className="wrapper">
         <span className="icon icon--blip_changed"></span>
-        Recently changed
+        { radarLabels?.changedRevision || 'Recently changed'}
       </div>
       <div className="wrapper">
         <span className="icon icon--blip_default"></span>
-        Unchanged
+        { radarLabels?.unchangedRevision|| 'Unchanged'}
       </div>
     </div>
   );
