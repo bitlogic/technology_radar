@@ -3,6 +3,7 @@ import {Item, HomepageOption, QuadrantConfig} from './model';
 export interface ConfigData {
   quadrants: { [key: string]: string };
   rings: string[];
+  allRing? : string;
   showEmptyRings: boolean;
   quadrantsMap: { [quadrant: string]: QuadrantConfig };
   chartConfig: {

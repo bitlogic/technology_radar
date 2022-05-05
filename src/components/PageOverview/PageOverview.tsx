@@ -36,15 +36,13 @@ export default function PageOverview({
   leaving,
   onLeave,
 }: PageOverviewProps) {
-  const [ring, setRing] = useState<string | "all">("all");
+  const all = config.allRing? config.allRing : "all";
+  const [ring, setRing] = useState<string>(all);
   const [search, setSearch] = useState(searchProp);
   const { pageOverview } = useMessages();
   const title = pageOverview?.title || 'Technologies Overview';
-
+  
   useEffect(() => {
-    if (rings.length > 0) {
-      setRing(rings[0]);
-    }
     setSearch(searchProp);
   }, [rings, searchProp]);
 
@@ -54,7 +52,7 @@ export default function PageOverview({
 
   const isRingActive = (ringName: string) => ring === ringName;
 
-  const itemMatchesRing = (item: Item) => ring === "all" || item.ring === ring;
+  const itemMatchesRing = (item: Item) => ring === all || item.ring === ring;
 
   const itemMatchesSearch = (item: Item) => {
     return (

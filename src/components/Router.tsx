@@ -99,7 +99,7 @@ export default function Router({
         <PageOverview
           items={items}
           config={config}
-          rings={config.rings}
+          rings={[config.allRing ? config.allRing : "all"].concat( config.rings)}
           search={search}
           leaving={leaving}
           onLeave={handlePageLeave}
